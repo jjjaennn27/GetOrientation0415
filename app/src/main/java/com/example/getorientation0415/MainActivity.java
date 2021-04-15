@@ -104,13 +104,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause(){ // background로 보냈다가 foreground로 돌아왔을 때 회전시키면 각도가 변하지 않으면 됨 (무반응
         super.onPause();
         sensorManager.unregisterListener(listener);
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume(){  // background로 보냈다가 foreground로 돌아왔을 때 회전시키면 각도가 변하면 됨
         super.onResume();
         sensorManager.registerListener(listener, magSensor, SensorManager.SENSOR_DELAY_UI);
         sensorManager.registerListener(listener, accSensor, SensorManager.SENSOR_DELAY_UI);
