@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     SensorManager sensorManager;
     Sensor magSensor, accSensor;
     SensorEventListener listener;
+    AzimuthView azimuthView;
 
     float[] magValues, accValues; //센서 값을 읽어오기 위한 배열
 
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 //        txtAzimuth = findViewById(R.id.txtAzimuth);
 //        txtPitch = findViewById(R.id.txtPitch);
 //        txtRoll = findViewById(R.id.txtRoll);
+
+        azimuthView = findViewById(R.id.azimuthView);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -57,8 +60,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "180", Toast.LENGTH_SHORT);
                     } else if((int) radian2Degree(values[0]) == -180) {
                         Toast.makeText(MainActivity.this, "-180", Toast.LENGTH_SHORT);
+
                     }
 
+                    azimuthView.azimuth = (int) radian2Degree(values[0]);
+                    azimuthView.invalidate();
 
 //                    txtAzimuth.setText("Azimuth: " + (int) radian2Degree(values[0]));
 //                    txtPitch.setText("Pitch: " + (int) radian2Degree(values[1]));
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private float radian2Degree(float radian) {
-        return radian * 100 /(float)Math.PI;
+        return radian * 180 /(float)Math.PI;
     }
 
     @Override
