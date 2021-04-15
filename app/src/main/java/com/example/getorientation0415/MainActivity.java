@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
                     float[] values = new float[3];
                     SensorManager.getOrientation(R, values);
 
-                    if((int) radian2Degree(values[0]) == 180) {
-                        Toast.makeText(MainActivity.this, "180", Toast.LENGTH_SHORT);
-                    } else if((int) radian2Degree(values[0]) == -180) {
-                        Toast.makeText(MainActivity.this, "-180", Toast.LENGTH_SHORT);
-
-                    }
+//                    if((int) radian2Degree(values[0]) == 180) {
+//                        Toast.makeText(MainActivity.this, "180", Toast.LENGTH_SHORT);
+//                    } else if((int) radian2Degree(values[0]) == -180) {
+//                        Toast.makeText(MainActivity.this, "-180", Toast.LENGTH_SHORT);
+//
+//                    }
 
                     azimuthView.azimuth = (int) radian2Degree(values[0]);
                     azimuthView.invalidate();
